@@ -234,7 +234,7 @@ def send_email(name, phone, service, date, time):
     msg = EmailMessage()
     msg.set_content(f"New Booking\nName: {name}\nPhone: {phone}\nService: {service}\nDate: {date}\nTime: {time}")
     msg['Subject'] = '🔔 New Booking - The Cutting Edge'
-    msg['From'] = "mohdraja2693@gmail.com"
+        msg['From'] = "mohdraja2693@gmail.com"
         msg['To'] = "mohdraja2693@gmail.com"
         with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
             smtp.login("mohdraja2693@gmail.com", "xqgtgspifscvxosd")
