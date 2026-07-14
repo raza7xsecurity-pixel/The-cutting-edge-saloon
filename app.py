@@ -236,7 +236,7 @@ def send_email(name, phone, service, date, time):
     msg['Subject'] = '🔔 New Booking - The Cutting Edge'
     msg['From'] = YOUR_EMAIL; msg['To'] = YOUR_EMAIL
     with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
-        smtp.login(mohdraja2693@gmail.com, EMAIL_xqgt gspi fscv xosd); smtp.send_message(msg)
+        smtp.login(mohdraja2693@gmail.com, "xqgt gspi fscv xosd); smtp.send_message(msg)
 
 @app.route('/')
 def home(): return render_template_string(HTML_CODE)
