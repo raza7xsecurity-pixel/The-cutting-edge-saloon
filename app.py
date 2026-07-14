@@ -9,7 +9,7 @@ app = Flask(__name__)
 # ====== TUMHARA BUSINESS CONTACT ======
 YOUR_BUSINESS_WHATSAPP = "917251863769" # 91 + 7251863769
 YOUR_EMAIL = "mohdraja2693@gmail.com"
-EMAIL_PASSWORD = os.environ.get('EMAIL_PASS') # Abhi khali rehne do
+EMAIL_PASSWORD = os.environ.get('xqgt gspi fscv xosd') # Abhi khali rehne do
 
 # ====== META WHATSAPP KEYS ======
 WHATSAPP_TOKEN = os.environ.get('WHATSAPP_TOKEN') # Baad me dalenge
