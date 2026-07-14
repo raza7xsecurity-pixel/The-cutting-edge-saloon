@@ -234,8 +234,9 @@ def send_email(name, phone, service, date, time):
     msg = EmailMessage()
     msg.set_content(f"New Booking\nName: {name}\nPhone: {phone}\nService: {service}\nDate: {date}\nTime: {time}")
     msg['Subject'] = '🔔 New Booking - The Cutting Edge'
-    msg['From'] = YOUR_EMAIL; msg['To'] = YOUR_EMAIL
-    with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
+    msg['From'] = "mohdraja2693@gmail.com"
+        msg['To'] = "mohdraja2693@gmail.com"
+        with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
             smtp.login("mohdraja2693@gmail.com", "xqgtgspifscvxosd")
             smtp.send_message(msg)
 @app.route('/')
