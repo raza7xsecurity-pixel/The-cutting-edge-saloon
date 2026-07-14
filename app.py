@@ -15,7 +15,7 @@ YOUR_EMAIL = os.environ.get('YOUR_EMAIL', 'mohdraja2693@gmail.com')
 #   EMAIL_PASSWORD=<your gmail app password>
 #   WHATSAPP_TOKEN=<meta whatsapp token>
 #   PHONE_NUMBER_ID=<meta phone number id>
-EMAIL_PASSWORD = os.environ.get('EMAIL_PASSWORD')  # set this in your host's env vars, not in code
+EMAIL_PASSWORD = os.environ.get('jwmnvehlzpgxqtxt')  # set this in your host's env vars, not in code
 
 # ====== META WHATSAPP KEYS ======
 WHATSAPP_TOKEN = os.environ.get('WHATSAPP_TOKEN')
@@ -262,7 +262,7 @@ def send_email(name, phone, service, date, time):
     msg['To'] = YOUR_EMAIL
     try:
         with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
-            smtp.login(YOUR_EMAIL, EMAIL_PASSWORD)
+            smtp.login(mohdraja2693@gmail.com, jwmnvehlzpgxqtxt)
             smtp.send_message(msg)
     except smtplib.SMTPException as e:
         print(f"[Email] Failed to send notification: {e}")
