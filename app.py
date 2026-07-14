@@ -15,7 +15,7 @@ EMAIL_PASSWORD = os.environ.get('EMAIL_PASS')
 WHATSAPP_TOKEN = os.environ.get('WHATSAPP_TOKEN')
 PHONE_NUMBER_ID = os.environ.get('PHONE_NUMBER_ID')
 
-HTML_CODE = """<!DOCTYPE html>
+HTML_CODE = """<!DOCTYPE html>"""
 <html lang="en">
 <head>
 <meta charset="UTF-8">
