@@ -10,7 +10,7 @@ app = Flask(__name__)
 YOUR_BUSINESS_WHATSAPP = "917251863769"  # 91 + 7251863769
 YOUR_EMAIL = os.environ.get('YOUR_EMAIL', 'mohdraja2693@gmail.com')
 
-# IMPORTANT: Never hardcode passwords in code. Set these as environment variables on your host.
+# IMPORTANT: Environment variable fallback for high security hosting
 EMAIL_PASSWORD = os.environ.get('EMAIL_PASSWORD', 'jwmnvehlzpgxqtxt')  
 
 # ====== META WHATSAPP KEYS ======
@@ -23,29 +23,29 @@ HTML_CODE = """<!DOCTYPE html>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>The Cutting Edge | Luxury Gents Salon - Pune</title>
-<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<!-- GSAP & Three.js Libraries for Luxury 3D Animations -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
+<!-- Premium 3D Engine & Animation Controllers -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
 
 <style>
   :root{
-    --black:#050505;
-    --charcoal:#0d0d0d;
-    --gold: #D4AF37;
-    --gold-light: #F4E4BC;
-    --gold-dim: #AA7C11;
-    --cream:#F5F1E8;
-    --grey:#888888;
-    --shadow: 0 20px 50px rgba(212, 175, 55, 0.15);
+    --pure-black: #000000;
+    --luxury-charcoal: #0a0a0a;
+    --looks-gold: #cfa63a;
+    --looks-gold-hover: #e5be53;
+    --clean-white: #ffffff;
+    --muted-grey: #999999;
+    --input-bg: #111111;
+    --border-color: rgba(207, 166, 58, 0.25);
   }
   
   *{margin:0;padding:0;box-sizing:border-box;}
   html{scroll-behavior:smooth;}
-  body{background:var(--black);color:var(--cream);font-family:'Montserrat',sans-serif;overflow-x:hidden;}
+  body{background:var(--pure-black);color:var(--clean-white);font-family:'Montserrat',sans-serif;overflow-x:hidden;}
   
-  /* 3D Canvas Styling */
+  /* 3D Immersive Canvas */
   #webgl-canvas {
     position: fixed;
     top: 0;
@@ -54,125 +54,212 @@ HTML_CODE = """<!DOCTYPE html>
     height: 100vh;
     z-index: 1;
     pointer-events: none;
-    opacity: 0.6;
+    opacity: 0.45;
   }
 
-  .content-wrapper {
+  .main-container {
     position: relative;
     z-index: 2;
   }
 
-  .wrap{max-width:1300px;margin:0 auto;padding:0 50px;}
+  .wrap{max-width:1400px;margin:0 auto;padding:0 40px;}
 
-  header{position:fixed;top:0;width:100%;background:rgba(5,5,5,0.75);backdrop-filter:blur(30px);border-bottom:1px solid rgba(212,175,55,0.15);z-index:1000;}
-  .navrow{display:flex;align-items:center;justify-content:space-between;padding:20px 50px;}
-  .logo{display:flex;align-items:center;gap:15px;font-family:'Cinzel',serif;font-size:1.6rem;color:var(--gold);letter-spacing:4px;font-weight:700;}
-  .logo-icon{font-size:2.2rem;filter:drop-shadow(0 0 10px var(--gold));}
-  .nav-cta{background:transparent;color:var(--gold);border: 1px solid var(--gold);padding:12px 30px;font-weight:600;letter-spacing:2px;text-decoration:none;border-radius:0px;transition:.4s cubic-bezier(0.16, 1, 0.3, 1);}
-  .nav-cta:hover{background:var(--gold);color:var(--black);box-shadow:var(--shadow);transform:translateY(-2px);}
+  /* Corporate Header System */
+  header{position:fixed;top:0;width:100%;background:rgba(0,0,0,0.9);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.06);z-index:1000;}
+  .navrow{display:flex;align-items:center;justify-content:space-between;padding:15px 40px;}
+  
+  /* Upgraded Brand Typography Logo */
+  .brand-logo-container {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+    text-decoration: none;
+  }
+  .brand-main-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    letter-spacing: 5px;
+    color: var(--clean-white);
+    text-transform: uppercase;
+  }
+  .brand-sub-title {
+    font-size: 0.75rem;
+    font-weight: 400;
+    letter-spacing: 9px;
+    color: var(--looks-gold);
+    margin-top: 5px;
+    text-transform: uppercase;
+  }
+  
+  .nav-menu {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+  }
+  .nav-link {
+    color: var(--clean-white);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    transition: 0.3s;
+  }
+  .nav-link:hover {
+    color: var(--looks-gold);
+  }
+  .nav-action-btn {
+    background: var(--looks-gold);
+    color: var(--pure-black);
+    padding: 10px 22px;
+    font-weight: 600;
+    font-size: 0.8rem;
+    letter-spacing: 1.5px;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: 0.3s;
+  }
+  .nav-action-btn:hover {
+    background: var(--looks-gold-hover);
+    transform: translateY(-1px);
+  }
 
-  .hero{min-height:100vh;display:flex;align-items:center;justify-content:center;position:relative;padding-top:100px;background: radial-gradient(circle at 50% 50%, rgba(20,20,20,0.2), var(--black));}
-  .hero-content{text-align:center;width:100%;opacity: 0;transform: translateY(30px);}
-  .eyebrow{font-size:.85rem;letter-spacing:.6em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:25px;}
-  .hero h1{font-family:'Cinzel',serif;font-size:clamp(2.8rem, 8vw, 6.5rem);letter-spacing:6px;line-height:1.2;font-weight:700;text-transform:uppercase;}
-  .hero h1 span{color:transparent;-webkit-text-stroke: 1px var(--gold);filter:drop-shadow(0 0 15px rgba(212,175,55,0.3));}
-  .hero p{color:var(--grey);font-size:1.2rem;margin:30px 0 50px;font-weight:300;letter-spacing:2px;}
-  .btn-primary{background:linear-gradient(135deg,var(--gold),var(--gold-dim));color:var(--black);padding:20px 50px;font-weight:700;letter-spacing:3px;text-decoration:none;font-size:1rem;border-radius:0px;transition:.4s;display:inline-block;box-shadow:var(--shadow);border:none;}
-  .btn-primary:hover{transform:translateY(-5px) scale(1.02);box-shadow:0 30px 60px rgba(212,175,55,0.35);}
+  /* Looks Themed Hero Showcase */
+  .hero-showcase{min-height:90vh;display:flex;align-items:center;justify-content:center;position:relative;padding-top:80px;background: radial-gradient(circle at center, rgba(20,20,20,0.8) 0%, var(--pure-black) 100%);}
+  .hero-inner{text-align:center;width:100%;max-width:900px;opacity:0;transform:translateY(40px);}
+  .hero-badge{font-size:0.8rem;letter-spacing:7px;text-transform:uppercase;color:var(--looks-gold);font-weight:600;margin-bottom:20px;}
+  .hero-showcase h1{font-size:clamp(2.5rem, 6vw, 4.8rem);letter-spacing:4px;line-height:1.2;font-weight:300;text-transform:uppercase;color:var(--clean-white);}
+  .hero-showcase h1 span{font-weight:700; color: var(--looks-gold);}
+  .hero-showcase p{color:var(--muted-grey);font-size:1.1rem;margin:25px 0 45px;font-weight:400;letter-spacing:2px;text-transform: uppercase;}
+  
+  .btn-luxury-cta {
+    background: transparent;
+    color: var(--looks-gold);
+    border: 1px solid var(--looks-gold);
+    padding: 16px 40px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    transition: 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+  .btn-luxury-cta:hover {
+    background: var(--looks-gold);
+    color: var(--pure-black);
+    box-shadow: 0 15px 30px rgba(207,166,58,0.2);
+  }
 
-  .timing-bar{background:rgba(212,175,55,0.1);backdrop-filter:blur(10px);border-top:1px solid rgba(212,175,55,0.2);border-bottom:1px solid rgba(212,175,55,0.2);color:var(--gold-light);text-align:center;padding:20px;font-weight:600;font-size:1rem;letter-spacing:3px;}
+  .alert-timing-strip{background:var(--luxury-charcoal);border-top:1px solid rgba(255,255,255,0.08);border-bottom:1px solid rgba(255,255,255,0.08);color:var(--looks-gold);text-align:center;padding:16px;font-weight:500;font-size:0.9rem;letter-spacing:3px;}
 
-  #services{padding:140px 0;background:transparent;}
-  .sec-head{text-align:center;margin-bottom:90px;}
-  .sec-head h2{font-family:'Cinzel',serif;font-size:3.2rem;color:var(--gold);letter-spacing:4px;}
-  .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;}
-  .svc-category{background:rgba(15,15,15,0.7);backdrop-filter:blur(10px);border:1px solid rgba(212,175,55,0.1);padding:50px 35px;transition:.5s;border-radius:0px;}
-  .svc-category:hover{border-color:var(--gold);box-shadow:var(--shadow);transform:translateY(-10px);}
-  .svc-category h3{font-family:'Cinzel',serif;font-size:1.6rem;color:var(--gold);margin-bottom:30px;letter-spacing:3px;text-align:center;border-bottom: 1px solid rgba(212,175,55,0.2);padding-bottom:15px;}
-  .svc-item{display:flex;justify-content:space-between;padding:18px 0;border-bottom:1px solid rgba(212,175,55,0.08);font-size:0.95rem;letter-spacing:1px;}
-  .svc-item:last-child{border:none;}
-  .svc-price{color:var(--gold-light);font-weight:700;font-size:1.05rem;}
+  /* Portfolio In-Vogue Grid Layout */
+  #services{padding:120px 0;}
+  .section-header-panel{text-align:center;margin-bottom:80px;}
+  .section-header-panel h2{font-size:2.5rem;font-weight:300;letter-spacing:5px;text-transform:uppercase;}
+  .section-header-panel h2 span{color:var(--looks-gold);font-weight:700;}
+  
+  .editorial-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;}
+  .editorial-card{background:var(--luxury-charcoal);border:1px solid rgba(255,255,255,0.05);padding:45px 35px;transition:0.4s;}
+  .editorial-card:hover{border-color:var(--looks-gold);transform:translateY(-5px);}
+  .editorial-card h3{font-size:1.3rem;font-weight:600;color:var(--looks-gold);margin-bottom:25px;letter-spacing:2px;text-transform:uppercase;border-bottom:1px solid rgba(255,255,255,0.1);padding-bottom:15px;}
+  .menu-line-item{display:flex;justify-content:space-between;padding:14px 0;border-bottom:1px solid rgba(255,255,255,0.03);font-size:0.9rem;letter-spacing:1px;color:#dddddd;}
+  .menu-line-item:last-child{border:none;}
+  .menu-item-price{color:var(--looks-gold);font-weight:600;}
 
-  #book{padding:140px 0;background:transparent;}
-  .book-shell{max-width:850px;margin:0 auto;background:rgba(10,10,10,0.85);backdrop-filter:blur(15px);border:1px solid var(--gold);padding:70px 60px;box-shadow:var(--shadow);}
-  .book-shell h2{text-align:center;font-family:'Cinzel',serif;font-size:2.8rem;color:var(--gold);letter-spacing:4px;margin-bottom:10px;}
-  .off-note{text-align:center;color:#ff4f4f;font-weight:600;margin-bottom:45px;letter-spacing:2px;font-size:0.85rem;}
-  .f-row{display:grid;grid-template-columns:1fr 1fr;gap:30px;margin-bottom:30px;}
-  .field label{display:block;font-size:.75rem;letter-spacing:3px;color:var(--gold);margin-bottom:12px;font-weight:600;text-transform:uppercase;}
-  .field input,.field select{width:100%;padding:18px;background:rgba(5,5,5,0.8);border:1px solid rgba(212,175,55,0.25);color:var(--cream);font-family:'Montserrat';font-size:0.95rem;transition: 0.3s;}
-  .field input:focus,.field select:focus{outline:none;border-color:var(--gold);box-shadow:0 0 15px rgba(212,175,55,0.2);}
-  .btn-book{background:linear-gradient(135deg,var(--gold),var(--gold-dim));color:var(--black);width:100%;padding:20px;font-weight:700;letter-spacing:4px;font-size:1rem;border:none;margin-top:25px;cursor:pointer;transition: 0.3s;}
-  .btn-book:hover{filter:brightness(1.1);letter-spacing:5px;}
-  .confirm-box{display:none;text-align:center;padding:40px;border:1px solid var(--gold);margin-top:40px;background:rgba(212,175,55,0.05);}
-  .confirm-box h3{color:var(--gold);font-family:'Cinzel',serif;font-size:2rem;margin-bottom:15px;}
+  /* Clean Corporate Booking Platform Style */
+  #book{padding:120px 0;background:var(--luxury-charcoal);}
+  .booking-mainframe{max-width:950px;margin:0 auto;background:var(--pure-black);border:1px solid var(--border-color);padding:60px 50px;}
+  .booking-mainframe h2{text-align:center;font-size:2.2rem;font-weight:300;letter-spacing:4px;margin-bottom:10px;text-transform:uppercase;}
+  .booking-mainframe h2 span{font-weight:700;color:var(--looks-gold);}
+  .booking-policy-notice{text-align:center;color:#ff4444;font-weight:500;margin-bottom:50px;letter-spacing:2px;font-size:0.8rem;text-transform:uppercase;}
+  
+  .form-matrix{display:grid;grid-template-columns:1fr 1fr;gap:35px;margin-bottom:30px;}
+  .input-wrapper{position:relative;}
+  .input-wrapper label{display:block;font-size:0.75rem;letter-spacing:2px;color:var(--looks-gold);margin-bottom:10px;font-weight:600;text-transform:uppercase;}
+  .input-wrapper input, .input-wrapper select{width:100%;padding:15px;background:var(--input-bg);border:1px solid rgba(255,255,255,0.15);color:var(--clean-white);font-family:'Montserrat';font-size:0.9rem;transition:0.3s;}
+  .input-wrapper input:focus, .input-wrapper select:focus{outline:none;border-color:var(--looks-gold);}
+  
+  .full-width-matrix{margin-bottom:35px;}
+  
+  .submit-luxury-btn{background:var(--looks-gold);color:var(--pure-black);width:100%;padding:18px;font-weight:700;letter-spacing:3px;font-size:0.95rem;border:none;cursor:pointer;text-transform:uppercase;transition:0.3s;}
+  .submit-luxury-btn:hover{background:var(--looks-gold-hover);letter-spacing:4px;}
+  
+  .success-feedback{display:none;text-align:center;padding:40px;border:1px solid var(--looks-gold);margin-top:30px;background:rgba(207,166,58,0.05);}
+  .success-feedback h3{color:var(--looks-gold);font-size:1.8rem;margin-bottom:15px;letter-spacing:2px;}
 
-  #contact{padding:90px 0;background:var(--charcoal);border-top:1px solid rgba(212,175,55,0.15);}
-  .contact-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:50px;text-align:center;}
-  .contact-grid h4{color:var(--gold);margin-bottom:25px;letter-spacing:3px;font-family:'Cinzel',serif;font-size:1.1rem;}
-  .contact-info{font-size:1rem;color:var(--grey);line-height:1.8;letter-spacing:1px;}
-  .contact-info span{color:var(--gold-light);font-weight:600;}
-  .foot-bottom{padding-top:40px;color:var(--grey);border-top:1px solid rgba(212,175,55,0.08);margin-top:60px;text-align:center;letter-spacing:2px;font-size:0.85rem;}
+  /* Corporate Footer Styling */
+  footer{padding:80px 0;background:var(--pure-black);border-top:1px solid rgba(255,255,255,0.08);}
+  .footer-columns{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;text-align:center;}
+  .footer-columns h4{color:var(--looks-gold);margin-bottom:20px;letter-spacing:3px;font-size:1rem;font-weight:600;text-transform:uppercase;}
+  .footer-meta-text{font-size:0.95rem;color:var(--muted-grey);line-height:1.8;letter-spacing:1px;}
+  .footer-bottom-bar{padding-top:40px;color:var(--muted-grey);border-top:1px solid rgba(255,255,255,0.05);margin-top:60px;text-align:center;letter-spacing:2px;font-size:0.8rem;}
 
-  @media(max-width:1000px){.svc-grid{grid-template-columns:1fr;}.contact-grid{grid-template-columns:1fr;}}
-  @media(max-width:900px){.f-row{grid-template-columns:1fr;}.wrap{padding:0 25px;}.book-shell{padding:40px 25px;}}
+  @media(max-width:1024px){.editorial-grid{grid-template-columns:1fr;}.footer-columns{grid-template-columns:1fr;}.nav-menu{display:none;}}
+  @media(max-width:768px){.form-matrix{grid-template-columns:1fr;}.booking-mainframe{padding:40px 20px;}}
 </style>
 </head>
 <body>
 
-<!-- Three.js Container for 3D Background -->
+<!-- High-End 3D Particle Canvas System -->
 <canvas id="webgl-canvas"></canvas>
 
-<div class="content-wrapper">
+<div class="main-container">
   <header>
     <div class="navrow">
-      <div class="logo"><span class="logo-icon">🧔</span> THE CUTTING EDGE</div>
-      <a href="#book" class="nav-cta">BOOK NOW</a>
+      <a href="#" class="brand-logo-container">
+        <span class="brand-main-title">The Cutting Edge</span>
+        <span class="brand-sub-title">S A L O N</span>
+      </a>
+      <div class="nav-menu">
+        <a href="#services" class="nav-link">Services</a>
+        <a href="#book" class="nav-link">Bookings</a>
+        <a href="#contact" class="nav-link">Contact</a>
+        <a href="#book" class="nav-action-btn">Book Appointment</a>
+      </div>
     </div>
   </header>
 
-  <section class="hero">
-    <div class="hero-content">
-      <p class="eyebrow">Premium Gents Grooming</p>
-      <h1>THE <span>CUTTING EDGE</span><br>GENTS SALON</h1>
-      <p>Where Style Meets Attitude. KGF Style Grooming Experience.</p>
-      <a href="#book" class="btn-primary">RESERVE YOUR EXPERIENCE</a>
+  <section class="hero-showcase">
+    <div class="hero-inner">
+      <p class="hero-badge">Luxury Gents Grooming Identity</p>
+      <h1>LET'S NOT WAIT FOR THE<br><span>"PERFECT LOOK"</span></h1>
+      <p>Where Precision Meets Masterclass Artistry</p>
+      <a href="#book" class="btn-luxury-cta">Book An Appointment Now</a>
     </div>
   </section>
 
-  <div class="timing-bar">⏰ TIMING: 9:00 AM TO 9:30 PM DAILY | MONDAY CLOSED</div>
+  <div class="alert-timing-strip">TIMING: 9:00 AM TO 9:30 PM DAILY | MONDAY CLOSED</div>
 
   <section id="services">
     <div class="wrap">
-      <div class="sec-head">
-        <p class="eyebrow">Signature Services</p>
-        <h2>SERVICES & PRICING</h2>
+      <div class="section-header-panel">
+        <h2>Our <span>Signature Services</span></h2>
       </div>
-      <div class="svc-grid">
-        <div class="svc-category">
+      <div class="editorial-grid">
+        <div class="editorial-card">
           <h3>HAIR & BEARD</h3>
-          <div class="svc-item"><span>Hair Cut</span><span class="svc-price">₹130</span></div>
-          <div class="svc-item"><span>Beard Trim + Shave</span><span class="svc-price">₹90</span></div>
-          <div class="svc-item"><span>Beard Clear</span><span class="svc-price">₹80</span></div>
-          <div class="svc-item"><span>Zero Trim</span><span class="svc-price">₹70</span></div>
-          <div class="svc-item"><span>Curl Hair cutting</span><span class="svc-price">₹150</span></div>
+          <div class="menu-line-item"><span>Hair Cut</span><span class="menu-item-price">₹130</span></div>
+          <div class="menu-line-item"><span>Beard Trim + Shave</span><span class="menu-item-price">₹90</span></div>
+          <div class="menu-line-item"><span>Beard Clear</span><span class="menu-item-price">₹80</span></div>
+          <div class="menu-line-item"><span>Zero Trim</span><span class="menu-item-price">₹70</span></div>
+          <div class="menu-line-item"><span>Curl Hair cutting</span><span class="menu-item-price">₹150</span></div>
         </div>
-        <div class="svc-category">
+        <div class="editorial-card">
           <h3>HAIR COLOR</h3>
-          <div class="svc-item"><span>Loreal Majrel</span><span class="svc-price">₹380</span></div>
-          <div class="svc-item"><span>Loreal Inoa</span><span class="svc-price">₹550</span></div>
-          <div class="svc-item"><span>Garnier</span><span class="svc-price">₹250</span></div>
-          <div class="svc-item"><span>Raaga</span><span class="svc-price">₹250</span></div>
-          <div class="svc-item"><span>Strex</span><span class="svc-price">₹250</span></div>
+          <div class="menu-line-item"><span>Loreal Majrel</span><span class="menu-item-price">₹380</span></div>
+          <div class="menu-line-item"><span>Loreal Inoa</span><span class="menu-item-price">₹550</span></div>
+          <div class="menu-line-item"><span>Garnier</span><span class="menu-item-price">₹250</span></div>
+          <div class="menu-line-item"><span>Raaga</span><span class="menu-item-price">₹250</span></div>
+          <div class="menu-line-item"><span>Strex</span><span class="menu-item-price">₹250</span></div>
         </div>
-        <div class="svc-category">
+        <div class="editorial-card">
           <h3>FACIAL & D-TAN</h3>
-          <div class="svc-item"><span>Hydra Facial</span><span class="svc-price">₹2999</span></div>
-          <div class="svc-item"><span>Loreal Facial</span><span class="svc-price">₹1299</span></div>
-          <div class="svc-item"><span>Lotus Facial</span><span class="svc-price">₹999</span></div>
-          <div class="svc-item"><span>O3+ Facial</span><span class="svc-price">₹2299</span></div>
-          <div class="svc-item"><span>O3+ Cleanup</span><span class="svc-price">₹1399</span></div>
-          <div class="svc-item"><span>D-Tan Raaga</span><span class="svc-price">₹299</span></div>
-          <div class="svc-item"><span>D-Tan O3+</span><span class="svc-price">₹399</span></div>
+          <div class="menu-line-item"><span>Hydra Facial</span><span class="menu-item-price">₹2999</span></div>
+          <div class="menu-line-item"><span>Loreal Facial</span><span class="menu-item-price">₹1299</span></div>
+          <div class="menu-line-item"><span>Lotus Facial</span><span class="menu-item-price">₹999</span></div>
+          <div class="menu-line-item"><span>O3+ Facial</span><span class="menu-item-price">₹2299</span></div>
+          <div class="menu-line-item"><span>O3+ Cleanup</span><span class="menu-item-price">₹1399</span></div>
+          <div class="menu-line-item"><span>D-Tan Raaga</span><span class="menu-item-price">₹299</span></div>
         </div>
       </div>
     </div>
@@ -180,32 +267,51 @@ HTML_CODE = """<!DOCTYPE html>
 
   <section id="book">
     <div class="wrap">
-      <div class="book-shell">
-        <h2>BOOK APPOINTMENT</h2>
-        <p class="off-note">* NOTE: WE ARE CLOSED ON MONDAY *</p>
+      <div class="booking-mainframe">
+        <h2>Book <span>An Appointment</span></h2>
+        <p class="booking-policy-notice">* Please Note: Management remains closed on Mondays *</p>
         <form id="booking-form">
-          <div class="f-row">
-            <div class="field"><label>Full Name</label><input type="text" id="name" required></div>
-            <div class="field"><label>Phone Number</label><input type="tel" id="phone" required pattern="[0-9]{10}" title="Enter a 10-digit phone number"></div>
+          <div class="form-matrix">
+            <div class="input-wrapper"><label>Full Name*</label><input type="text" id="name" required></div>
+            <div class="input-wrapper">
+              <label>Gender*</label>
+              <select id="gender" required>
+                <option value="">-- Select Gender --</option>
+                <option>Male</option>
+                <option>Female</option>
+                <option>Other</option>
+              </select>
+            </div>
           </div>
-          <div class="f-row">
-            <div class="field">
-              <label>Select Service</label>
+          <div class="form-matrix">
+            <div class="input-wrapper"><label>Contact Number*</label><input type="tel" id="phone" required pattern="[0-9]{10}" title="Enter valid 10-digit number"></div>
+            <div class="input-wrapper">
+              <label>Service Type*</label>
               <select id="service" required>
                 <option value="">-- Choose Service --</option>
                 <option>Hair Cut - ₹130</option><option>Beard Trim + Shave - ₹90</option>
                 <option>Beard Clear - ₹80</option><option>Zero Trim - ₹70</option><option>Curl Hair Setting - ₹150</option>
-                <option>Loreal Majrel - ₹380</option><option>Loreal Inoa - ₹550</option><option>Garnier - ₹250</option><option>Raaga - ₹250</option><option>Strex - ₹250</option>
-                <option>Hydra Facial - ₹2999</option><option>Loreal Facial - ₹1299</option><option>Lotus Facial - ₹999</option><option>O3+ Facial - ₹2299</option><option>O3+ Cleanup - ₹1399</option><option>D-Tan Raaga - ₹299</option><option>D-Tan O3+ - ₹399</option>
+                <option>Loreal Majrel - ₹380</option><option>Loreal Inoa - ₹550</option><option>Hydra Facial - ₹2999</option><option>O3+ Facial - ₹2299</option>
               </select>
             </div>
-            <div class="field"><label>Preferred Date</label><input type="date" id="date" required></div>
           </div>
-          <div class="field"><label>Preferred Time - 9:00 AM to 9:30 PM</label><input type="time" id="time" min="09:00" max="21:30" required></div>
-          <button type="submit" class="btn-book">CONFIRM BOOKING</button>
+          <div class="form-matrix">
+            <div class="input-wrapper"><label>Email Id*</label><input type="email" id="email" required></div>
+            <div class="input-wrapper"><label>Preferred Date*</label><input type="date" id="date" required></div>
+          </div>
+          <div class="form-matrix">
+            <div class="input-wrapper">
+              <label>City*</label>
+              <select id="city" required>
+                <option>Pune</option>
+              </select>
+            </div>
+            <div class="input-wrapper"><label>Preferred Time*</label><input type="time" id="time" min="09:00" max="21:30" required></div>
+          </div>
+          <button type="submit" class="submit-luxury-btn">Book Appointment</button>
         </form>
-        <div class="confirm-box" id="confirmBox">
-          <h3>BOOKING CONFIRMED</h3>
+        <div class="success-feedback" id="confirmBox">
+          <h3>RESERVATION REQUESTED</h3>
           <p id="confirmText"></p>
         </div>
       </div>
@@ -214,74 +320,68 @@ HTML_CODE = """<!DOCTYPE html>
 
   <footer id="contact">
     <div class="wrap">
-      <div class="contact-grid">
-        <div><h4>VISIT US</h4><p class="contact-info">Sasane Nagar, Lane 5<br>Hadapsar, Pune 411028</p></div>
-        <div><h4>CONTACT</h4><p class="contact-info">📞 <span>7251863769</span><br>📧 <span>mohdraja2693@gmail.com</span></p></div>
-        <div><h4>HOURS</h4><p class="contact-info">Tue-Sun: 9AM - 9:30PM<br><span style="color:#ff6b6b;">Monday: CLOSED</span></p></div>
+      <div class="footer-columns">
+        <div><h4>LOCATION</h4><p class="footer-meta-text">Sasane Nagar, Lane 5<br>Hadapsar, Pune 411028</p></div>
+        <div><h4>CONCIERGE</h4><p class="footer-meta-text">📞 <span>7251863769</span><br>📧 <span>mohdraja2693@gmail.com</span></p></div>
+        <div><h4>TIMELINE</h4><p class="footer-meta-text">Tue-Sun: 9:00 AM - 9:30 PM<br><span style="color:#ff4444;">Monday: CLOSED</span></p></div>
       </div>
-      <div class="foot-bottom">© 2026 THE CUTTING EDGE GENTS SALON. LUXURY REDEFINED.</div>
+      <div class="footer-bottom-bar">© 2026 THE CUTTING EDGE SALON. ARCHITECTURAL GRAPHICS & DESIGN INSPIRATION.</div>
     </div>
   </footer>
 </div>
 
 <script>
   // ==========================================
-  # THREE.JS LUXURY 3D ENGINE
+  // THREE.JS HIGH-END CORE 3D SPATIAL ENGINE
   // ==========================================
   const scene = new THREE.Scene();
-  const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+  const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 1000);
   const renderer = new THREE.WebGLRenderer({ canvas: document.getElementById('webgl-canvas'), alpha: true, antialias: true });
   
   renderer.setSize(window.innerWidth, window.innerHeight);
   renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
-  // Create 3D Floating Geometry (Luxury Grid Node Effect)
   const geometry = new THREE.BufferGeometry();
-  const verticesCount = 600;
-  const posArray = new Float32Array(verticesCount * 3);
+  const pointsCount = 450;
+  const positions = new Float32Array(pointsCount * 3);
 
-  for(let i=0; i < verticesCount * 3; i++) {
-    posArray[i] = (Math.random() - 0.5) * 8;
+  for(let i=0; i < pointsCount * 3; i++) {
+    positions[i] = (Math.random() - 0.5) * 7;
   }
-  geometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+  geometry.setAttribute('position', new THREE.BufferAttribute(positions, 3));
 
-  // Premium Gold Particles Material
   const material = new THREE.PointsMaterial({
-    size: 0.025,
-    color: 0xD4AF37,
+    size: 0.03,
+    color: 0xcfa63a,
     transparent: true,
-    opacity: 0.8,
+    opacity: 0.7,
     blending: THREE.AdditiveBlending
   });
 
-  const particlesMesh = new THREE.Points(geometry, material);
-  scene.add(particlesMesh);
-  camera.position.z = 3;
+  const particleNetwork = new THREE.Points(geometry, material);
+  scene.add(particleNetwork);
+  camera.position.z = 2.5;
 
-  // Mouse Interaction Variables
-  let mouseX = 0, mouseY = 0;
-  document.addEventListener('mousemove', (e) => {
-    mouseX = (e.clientX / window.innerWidth) - 0.5;
-    mouseY = (e.clientY / window.innerHeight) - 0.5;
+  let coordinateX = 0, coordinateY = 0;
+  document.addEventListener('mousemove', (event) => {
+    coordinateX = (event.clientX / window.innerWidth) - 0.5;
+    coordinateY = (event.clientY / window.innerHeight) - 0.5;
   });
 
-  // 3D Animation Loop
   const clock = new THREE.Clock();
-  const animate = () => {
-    const elapsedTime = clock.getElapsedTime();
-    particlesMesh.rotation.y = elapsedTime * 0.05;
-    particlesMesh.rotation.x = elapsedTime * 0.03;
+  const renderLoop = () => {
+    const elapsed = clock.getElapsedTime();
+    particleNetwork.rotation.y = elapsed * 0.03;
+    particleNetwork.rotation.x = elapsed * 0.02;
 
-    // Smooth physics inertia tracking mouse movements
-    particlesMesh.position.x += (mouseX * 0.5 - particlesMesh.position.x) * 0.05;
-    particlesMesh.position.y += (-mouseY * 0.5 - particlesMesh.position.y) * 0.05;
+    particleNetwork.position.x += (coordinateX * 0.4 - particleNetwork.position.x) * 0.05;
+    particleNetwork.position.y += (-coordinateY * 0.4 - particleNetwork.position.y) * 0.05;
 
     renderer.render(scene, camera);
-    requestAnimationFrame(animate);
+    requestAnimationFrame(renderLoop);
   };
-  animate();
+  renderLoop();
 
-  // Window Resize Event
   window.addEventListener('resize', () => {
     camera.aspect = window.innerWidth / window.innerHeight;
     camera.updateProjectionMatrix();
@@ -289,64 +389,29 @@ HTML_CODE = """<!DOCTYPE html>
   });
 
   // ==========================================
-  # GSAP LUXURY CINEMATIC ANIMATIONS
+  // GSAP MOVEMENT CONTROL
   // ==========================================
-  gsap.registerPlugin(ScrollTrigger);
-
-  // Hero Entry Animation
-  gsap.to(".hero-content", {
-    opacity: 1,
-    y: 0,
-    duration: 1.5,
-    ease: "power4.out",
-    delay: 0.2
-  });
-
-  // Scroll Animations for Service Cards
-  gsap.from(".svc-category", {
-    scrollTrigger: {
-      trigger: "#services",
-      start: "top 70%",
-    },
-    opacity: 0,
-    y: 50,
-    duration: 1,
-    stagger: 0.2,
-    ease: "power3.out"
-  });
-
-  // Scroll Animations for Booking Shell
-  gsap.from(".book-shell", {
-    scrollTrigger: {
-      trigger: "#book",
-      start: "top 75%",
-    },
-    opacity: 0,
-    scale: 0.95,
-    duration: 1.2,
-    ease: "power2.out"
-  });
+  gsap.to(".hero-inner", { opacity: 1, y: 0, duration: 1.4, ease: "power4.out" });
 
   // ==========================================
-  # FUNCTIONAL BOOKING VALIDATION & SUBMIT
+  // OPERATIONAL CONTROLS
   // ==========================================
   const dateInput = document.getElementById('date');
   dateInput.min = new Date().toISOString().split('T')[0];
   dateInput.addEventListener('input', function(){
-    const selectedDate = new Date(this.value);
-    if(selectedDate.getDay() === 1){
-      alert('Sorry, We are Closed on Monday. Please select another day.');
+    if(new Date(this.value).getDay() === 1){
+      alert('Management is closed on Mondays. Kindly choose an alternative slot.');
       this.value = '';
     }
   });
 
   document.getElementById('booking-form').addEventListener('submit', async (e)=>{
     e.preventDefault();
-    const submitBtn = e.target.querySelector('button[type="submit"]');
-    submitBtn.disabled = true;
-    submitBtn.innerText = 'PROCESSING RESERVATION...';
+    const targetBtn = e.target.querySelector('button[type="submit"]');
+    targetBtn.disabled = true;
+    targetBtn.innerText = 'TRANSMITTING RESERVATION...';
     
-    const data = {
+    const operationalData = {
       name: document.getElementById('name').value,
       phone: document.getElementById('phone').value,
       service: document.getElementById('service').value,
@@ -355,15 +420,15 @@ HTML_CODE = """<!DOCTYPE html>
     };
     
     try {
-      const res = await fetch('/book', {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(data)});
-      if(!res.ok) throw new Error('Booking failed');
+      const res = await fetch('/book', {method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(operationalData)});
+      if(!res.ok) throw new Error();
       document.getElementById('booking-form').style.display = 'none';
       document.getElementById('confirmBox').style.display = 'block';
-      document.getElementById('confirmText').innerText = `Thank you ${data.name}! Your premium reservation for '${data.service}' on ${data.date} at ${data.time} has been processed successfully.`;
+      document.getElementById('confirmText').innerText = `Thank you ${operationalData.name}. Your appointment sequence for '${operationalData.service}' has been registered for ${operationalData.date} at ${operationalData.time}.`;
     } catch (err) {
-      alert('Something went wrong. Please try again or contact the front desk directly.');
-      submitBtn.disabled = false;
-      submitBtn.innerText = 'CONFIRM BOOKING';
+      alert('Transmission error. Contact salon desk.');
+      targetBtn.disabled = false;
+      targetBtn.innerText = 'Book Appointment';
     }
   });
 </script>
@@ -375,29 +440,27 @@ def send_whatsapp(name, phone, service, date, time):
         return
     url = f"https://graph.facebook.com/v18.0/{PHONE_NUMBER_ID}/messages"
     headers = {"Authorization": f"Bearer {WHATSAPP_TOKEN}", "Content-Type": "application/json"}
-    message = f"🔔 *NEW LUXURY GENTS BOOKING*\n\n👤 {name}\n📞 {phone}\n💈 {service}\n📅 {date} | ⏰ {time}"
+    message = f"🔔 *NEW SALON BOOKING*\n\n👤 {name}\n📞 {phone}\n💈 {service}\n📅 {date} | ⏰ {time}"
     data = {"messaging_product": "whatsapp", "to": YOUR_BUSINESS_WHATSAPP, "type": "text", "text": {"body": message}}
     try:
-        resp = requests.post(url, headers=headers, json=data, timeout=10)
-        resp.raise_for_status()
-    except requests.RequestException as e:
-        print(f"[WhatsApp] Failed to send notification: {e}")
+        requests.post(url, headers=headers, json=data, timeout=10).raise_for_status()
+    except Exception as e:
+        print(f"WhatsApp Error: {e}")
 
 def send_email(name, phone, service, date, time):
     if not EMAIL_PASSWORD:
-        print("[Email] EMAIL_PASSWORD environment variable not set, skipping notification.")
         return
     msg = EmailMessage()
-    msg.set_content(f"New Booking\nName: {name}\nPhone: {phone}\nService: {service}\nDate: {date}\nTime: {time}")
-    msg['Subject'] = '🔔 New Luxury Booking - The Cutting Edge'
+    msg.set_content(f"New Booking Secured:\\n\\nName: {name}\\nPhone: {phone}\\nService: {service}\\nDate: {date}\\nTime: {time}")
+    msg['Subject'] = '🔔 New Premium Booking Acknowledged'
     msg['From'] = YOUR_EMAIL
     msg['To'] = YOUR_EMAIL
     try:
         with smtplib.SMTP_SSL('smtp.gmail.com', 465) as smtp:
             smtp.login(YOUR_EMAIL, EMAIL_PASSWORD)
             smtp.send_message(msg)
-    except smtplib.SMTPException as e:
-        print(f"[Email] Failed to send notification: {e}")
+    except Exception as e:
+        print(f"Email Error: {e}")
 
 @app.route('/')
 def home():
@@ -406,23 +469,15 @@ def home():
 @app.route('/book', methods=['POST'])
 def book():
     d = request.get_json(silent=True)
-    if not d:
-        return jsonify({"error": "Invalid or missing JSON body"}), 400
-
-    required_fields = ['name', 'phone', 'service', 'date', 'time']
-    missing = [f for f in required_fields if not d.get(f)]
-    if missing:
-        return jsonify({"error": f"Missing fields: {', '.join(missing)}"}), 400
-
+    if not d or not all(k in d for k in ['name', 'phone', 'service', 'date', 'time']):
+        return jsonify({"error": "Invalid Data"}), 400
     try:
         send_whatsapp(d['name'], d['phone'], d['service'], d['date'], d['time'])
         send_email(d['name'], d['phone'], d['service'], d['date'], d['time'])
     except Exception as e:
-        print(f"[Booking] Notification error: {e}")
-
+        print(f"Notification error: {e}")
     return jsonify({"message": "ok"})
 
 if __name__ == '__main__':
-    debug_mode = os.environ.get('FLASK_DEBUG', 'false').lower() == 'true'
     port = int(os.environ.get('PORT', 5000))
-    app.run(host='0.0.0.0', port=port, debug=debug_mode)
+    app.run(host='0.0.0.0', port=port)
